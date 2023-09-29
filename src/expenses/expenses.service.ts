@@ -19,6 +19,13 @@ export class ExpensesService {
     const expensesDocuments = await this.expenseRepository.find({ userId });
     return expensesDocuments.map((expense) => this.toModel(expense));
   }
+  async deleteExpense(expenseId: string) {
+    const deleteddocumnet = await this.expenseRepository.findOneAndDelete({
+      _id: expenseId,
+    });
+    return this.toModel(deleteddocumnet);
+    // return expensesDocuments.map((expense) => this.toModel(expense));
+  }
 
   private toModel(expenseDocument: ExpenseDocument) {
     return {
