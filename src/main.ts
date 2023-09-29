@@ -5,8 +5,13 @@ import * as cookieParser from 'cookie-parser';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
+  const corsOptions = {
+    origin: 'https://fg-homebudget.netlify.app/', // Replace with your Netlify domain
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Allow cookies and credentials to be sent cross-origin
+  };
   const app = await NestFactory.create(AppModule);
-  app.enableCors();
+  app.enableCors(corsOptions);
   app.use(cookieParser());
   app.useGlobalPipes(new ValidationPipe());
 
