@@ -6,7 +6,7 @@ import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const corsOptions = {
-    origin: 'https://fg-homebudget.netlify.app/', // Replace with your Netlify domain
+    origin: ['https://fg-homebudget.netlify.app', 'http://localhost:4200'], // Replace with your Netlify domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow cookies and credentials to be sent cross-origin
   };
